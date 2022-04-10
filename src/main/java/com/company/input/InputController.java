@@ -16,7 +16,7 @@ public class InputController {
     public boolean isKeyword(String inputValue) {
         return inputValue != null && (inputValue.equals("back") || inputValue.equals("menu")
                 ||inputValue.equals("add")|| inputValue.equals("delete")||inputValue.equals("student")
-                ||inputValue.equals("teacher"));
+                ||inputValue.equals("teacher")||inputValue.equals("modify"));
     }
 
     public boolean isValidGroupId(String groupIdString, List<Group> groupList) {

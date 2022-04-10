@@ -111,8 +111,8 @@ public class Printer {
         System.out.printf("%s", "Choose your option: ");
     }
     public void printUpdateMenu(){
-        System.out.printf("+%.5s+%.8s+%n", "----------", "--------------");
-        System.out.printf("|%4s | %-7s|%n", "Add", "Delete");
-        System.out.printf("+%.5s+%.8s+%n", "-----------", "---------------");
+        System.out.printf("+%.5s+%.9s+%.8s+%n", "----------", "--------------","--------------");
+        System.out.printf("|%4s | %-7s | %-7s|%n", "Add", "Delete","Modify");
+        System.out.printf("+%.5s+%.9s+%.8s+%n", "-----------", "---------------","--------------");
     }
 }

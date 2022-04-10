@@ -10,6 +10,7 @@ import java.util.List;
 
 public class GroupProvider {
     ConnectionDb connectionDb = new ConnectionDb();
+
     public List<Group> getGroupList() {
         List<Group> groupList = new ArrayList<>();
         try {
@@ -27,4 +28,18 @@ public class GroupProvider {
         }
         return groupList;
     }
+
+    public int modifyGroup(int groupId,String newName) {
+        int rows = 0;
+        try {
+            Connection dbConnection = connectionDb.getConnection();
+            Statement statement = dbConnection.createStatement();
+            rows = statement.executeUpdate("UPDATE groups SET groupname = '"
+                    + newName + "' where id = '" + groupId + "'");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return rows;
+    }
 }
+

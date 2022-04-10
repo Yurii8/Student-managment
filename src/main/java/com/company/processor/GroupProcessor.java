@@ -37,8 +37,12 @@ public class GroupProcessor {
                 }
                 if(choice.equals("add") ){
                     addGroup();
-                }else {
+                }if (choice.equals("delete")){
                     deleteGroup();
+                }
+                else {
+                    modifyGroups();
+
                 }
                 break;
             }
@@ -134,6 +138,18 @@ public class GroupProcessor {
         return students.size() > 0;
     }
 
+    public void modifyGroups(){
+        System.out.println("Enter the id of the group you want to modify:");
+        String groupIdString = inputController.inputString();
+        int groupId = Integer.parseInt(groupIdString);
+        System.out.println("Enter a new group name");
+        String newGroupName = inputController.inputString();
+        if(groupProvider.modifyGroup(groupId, newGroupName )> 0){
+            System.out.println("The group is modified");
+        }else {
+            System.out.println("The group is not modified");
+        }
+    }
     private void addGoBackButton() {
         printer.printBackMenu();
         choice = inputController.inputString();
