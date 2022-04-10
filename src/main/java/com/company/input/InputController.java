@@ -12,6 +12,7 @@ public class InputController {
     public String inputString() {
         return in.next();
     }
+    public char inputChar(){return in.next().charAt(0);}
 
     public boolean isKeyword(String inputValue) {
         return inputValue != null && (inputValue.equals("back") || inputValue.equals("menu")

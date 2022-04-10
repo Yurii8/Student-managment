@@ -1,11 +1,16 @@
 package com.company.processor;
 
+import com.company.entity.Student;
 import com.company.menu.StartMenu;
 import com.company.provider.AddProvider;
 import com.company.input.InputController;
 import com.company.printer.Printer;
+import com.company.provider.StudentProvider;
+
+import java.util.List;
 
 public class AddProcessor {
+    public static final int MAX_GROUP_CAPACITY = 40;
     Printer printer = new Printer();
     InputController inputController = new InputController();
     AddProvider addProvider = new AddProvider();
@@ -31,16 +36,22 @@ public class AddProcessor {
     }
 
     public void addStudentProcessor() {
-        System.out.print("Enter name students:");
-        String name = inputController.inputString();
-        System.out.print("Enter surname students:");
-        String surname = inputController.inputString();
         System.out.print("Enter id group students:");
-        String groupId = inputController.inputString();
-        if (addProvider.addStudents( name, surname, Integer.parseInt(groupId)) > 0) {
-            System.out.println("Student add");
-        } else {
-            System.out.println("Student don`t add");
+        String groupIdString = inputController.inputString();
+        int groupId = Integer.parseInt(groupIdString);
+        List<Student> studentGroup = new StudentProvider().getStudentsByGroupId(groupId);
+        if(studentGroup.size()== MAX_GROUP_CAPACITY){
+            System.out.println("It`s group is full");
+        }else {
+            System.out.print("Enter name students:");
+            String name = inputController.inputString();
+            System.out.print("Enter surname students:");
+            String surname = inputController.inputString();
+            if (addProvider.addStudents(name, surname, groupId) > 0) {
+                System.out.println("Student add");
+            } else {
+                System.out.println("Student don`t add");
+            }
         }
         addGoBackButton();
     }

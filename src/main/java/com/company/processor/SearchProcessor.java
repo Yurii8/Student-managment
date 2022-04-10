@@ -43,7 +43,7 @@ public class SearchProcessor {
 
     public void searchStudent() {
         System.out.print("Search by id will be?(Y/N)");
-        char cha = inputController.in.next().charAt(0);
+        char cha = inputController.inputChar();
         if (cha == 'Y' || cha == 'y') {
             System.out.print("Enter an id:");
             String id = inputController.inputString();
@@ -79,7 +79,7 @@ public class SearchProcessor {
 
     public void searchTeacher() {
         System.out.print("Search by id will be?(Y/N)");
-        char cha = inputController.in.next().charAt(0);
+        char cha = inputController.inputChar();
         if (cha == 'Y' || cha == 'y') {
             System.out.print("Enter an id:");
             String id = inputController.inputString();

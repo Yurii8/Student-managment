@@ -37,7 +37,7 @@ public class RemoveProcessor {
 
     public void removeStudentProcessor() {
         System.out.print("Delete by id will be?(Y/N)");
-        char cha = inputController.in.next().charAt(0);
+        char cha = inputController.inputChar();
         if (cha == 'Y' || cha == 'y') {
             System.out.print("Enter an id:");
             String id = inputController.inputString();
@@ -68,7 +68,7 @@ public class RemoveProcessor {
 
     public void removeTeacherProcessor() {
         System.out.print("Delete by id will be?(Y/N)");
-        char cha = inputController.in.next().charAt(0);
+        char cha = inputController.inputChar();
         if (cha == 'Y' || cha == 'y') {
             System.out.print("Enter an id:");
             String id = inputController.inputString();

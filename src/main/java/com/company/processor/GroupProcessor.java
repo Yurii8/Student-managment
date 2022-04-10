@@ -91,14 +91,14 @@ public class GroupProcessor {
     }
     public void deleteGroup(){
         System.out.print("Delete by id will be?(Y/N)");
-        char charAt = inputController.in.next().charAt(0);
+        char charAt = inputController.inputChar();
         if (charAt == 'Y' || charAt == 'y') {
             System.out.print("Enter an id:");
             String id = inputController.inputString();
             int groupId = Integer.parseInt(id);
             if(isPresentById(groupId)){
                 System.out.println("There are students present in the group, are you sure you want to delete this group?(Y/N)");
-                char yesOrNo = inputController.in.next().charAt(0);
+                char yesOrNo = inputController.inputChar();
                 if(yesOrNo == 'Y' || yesOrNo == 'y'){
                     if (removeProvider.deleteGroupById(groupId) > 0){
                         System.out.println("Group removed");
@@ -114,7 +114,7 @@ public class GroupProcessor {
             String name = inputController.inputString();
             if(isPresentByName(name)) {
                 System.out.println("There are students present in the group, are you sure you want to delete this group?(Y/N)");
-                char yesOrNo = inputController.in.next().charAt(0);
+                char yesOrNo = inputController.inputChar();
                 if (yesOrNo == 'Y' || yesOrNo == 'y') {
                     if (removeProvider.deleteGroupByName(name) > 0) {
                         System.out.println("Group removed");
