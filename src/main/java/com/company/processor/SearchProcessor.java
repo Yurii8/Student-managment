@@ -64,6 +64,7 @@ public class SearchProcessor {
             }
         } else {
             System.out.print("Enter a name:");
+
             String name = inputController.inputString();
             List<Student> students = searchProvider.getStudentByName(name);
             for (Student student : students) {
