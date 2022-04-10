@@ -31,15 +31,13 @@ public class AddProcessor {
     }
 
     public void addStudentProcessor() {
-        System.out.print("Enter id students:");
-        String id = inputController.inputString();
         System.out.print("Enter name students:");
         String name = inputController.inputString();
         System.out.print("Enter surname students:");
         String surname = inputController.inputString();
         System.out.print("Enter id group students:");
         String groupId = inputController.inputString();
-        if (addProvider.addStudents(Integer.parseInt(id), name, surname, Integer.parseInt(groupId)) > 0) {
+        if (addProvider.addStudents( name, surname, Integer.parseInt(groupId)) > 0) {
             System.out.println("Student add");
         } else {
             System.out.println("Student don`t add");
@@ -49,13 +47,11 @@ public class AddProcessor {
 
 
     public void addTeacherProcessor() {
-        System.out.print("Enter id teacher:");
-        String id = inputController.inputString();
         System.out.print("Enter name teacher:");
         String name = inputController.inputString();
         System.out.print("Enter surname teacher:");
         String surname = inputController.inputString();
-        if (addProvider.addTeachers(Integer.parseInt(id), name, surname) >0) {
+        if (addProvider.addTeachers( name, surname) >0) {
             System.out.println("Teacher add");
         } else {
             System.out.println("Teacher don`t add");

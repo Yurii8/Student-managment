@@ -74,11 +74,9 @@ public class GroupProcessor {
         }
     }
     public void addGroup(){
-        System.out.print("Enter id group: ");
-        String id = inputController.inputString();
         System.out.print("Enter name group");
         String groupName = inputController.inputString();
-        if(addProvider.addGroup(Integer.parseInt(id),groupName) > 0){
+        if(addProvider.addGroup(groupName) > 0){
             System.out.println("Group add");
         }else {
             System.out.println("Group don`t add");

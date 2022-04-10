@@ -10,35 +10,34 @@ import java.sql.Statement;
 public class AddProvider {
     ConnectionDb connectionDb = new ConnectionDb();
     int rows = 0;
-    public int addStudents(int id, String name, String surname, int groupId) {
+    public int addStudents( String name, String surname, int groupId) {
         try {
             Connection dbConnection = connectionDb.getConnection();
             Statement statement = dbConnection.createStatement();
-            rows = statement.executeUpdate("INSERT into students (id,name,surname,groupid) VALUES ('"
-                    + id + "', '" + name + "', '" + surname + "','" + groupId + "')");
+            rows = statement.executeUpdate("INSERT into students (name,surname,groupid) VALUES ('" + name + "', '" + surname + "','" + groupId + "')");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         return rows;
     }
 
-    public int addTeachers(int id, String name, String surname) {
+    public int addTeachers( String name, String surname) {
         try {
             Connection dbConnection = connectionDb.getConnection();
             Statement statement = dbConnection.createStatement();
-            rows = statement.executeUpdate("INSERT into teachers (id,name,surname) VALUES ('"
-                    + id + "', '" + name + "', '" + surname + "')");
+            rows = statement.executeUpdate("INSERT into teachers (name,surname) VALUES ('"
+                    + name + "', '" + surname + "')");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         return rows;
     }
-    public int addGroup(int id,String groupName){
+    public int addGroup(String groupName){
         try{
             Connection dbConnection = connectionDb.getConnection();
             Statement statement = dbConnection.createStatement();
             rows = statement.executeUpdate("INSERT into groups (id,groupname) VALUES ('"
-            + id + "','" + groupName +"')");
+                    + groupName +"')");
         }catch (SQLException e){
             System.out.println(e.getMessage());
         }
