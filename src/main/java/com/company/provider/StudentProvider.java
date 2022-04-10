@@ -32,6 +32,26 @@ ConnectionDb connectionDb = new ConnectionDb();
         return group;
     }
 
+    public List<Student> getStudentsByName(String groupName) {
+        List<Student> group = new ArrayList<>();
+        try {
+            Connection dbConnection = connectionDb.getConnection();
+            Statement statement = dbConnection.createStatement();
+            ResultSet rs = statement.executeQuery("select students.id, name ,surname, groupname from students inner join groups on students.groupid = groups.id where groupname ='" + groupName + "'");
+            while (rs.next()) {
+                Student student = new Student();
+                student.setId(rs.getInt("id"));
+                student.setName(rs.getString("name"));
+                student.setSurname(rs.getString("surname"));
+                student.setGroupName(rs.getString("groupname"));
+                group.add(student);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return group;
+    }
+
     public List<Student> getAllStudents() {
         List<Student> allStudentsList = new ArrayList<>();
         try {

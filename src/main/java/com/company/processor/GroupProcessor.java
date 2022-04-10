@@ -1,12 +1,14 @@
 package com.company.processor;
 
 import com.company.entity.Group;
+import com.company.entity.Student;
 import com.company.input.InputController;
 import com.company.menu.StartMenu;
 import com.company.printer.Printer;
 import com.company.provider.AddProvider;
 import com.company.provider.GroupProvider;
 import com.company.provider.RemoveProvider;
+import com.company.provider.StudentProvider;
 
 import java.util.List;
 
@@ -89,21 +91,47 @@ public class GroupProcessor {
         if (charAt == 'Y' || charAt == 'y') {
             System.out.print("Enter an id:");
             String id = inputController.inputString();
-            if (removeProvider.deleteGroupById(Integer.parseInt(id)) > 0) {
-                System.out.println("Group removed");
-            } else {
-                System.out.println("Group don`t removed");
+            int groupId = Integer.parseInt(id);
+            if(isPresentById(groupId)){
+                System.out.println("There are students present in the group, are you sure you want to delete this group?(Y/N)");
+                char yesOrNo = inputController.in.next().charAt(0);
+                if(yesOrNo == 'Y' || yesOrNo == 'y'){
+                    if (removeProvider.deleteGroupById(groupId) > 0){
+                        System.out.println("Group removed");
+                    } else {
+                        System.out.println("Group don`t removed");
+                    }
+                }else{
+                    return;
+                }
             }
         } else {
             System.out.print("Enter a name:");
             String name = inputController.inputString();
-            if (removeProvider.deleteGroupByName(name) > 0) {
-                System.out.println("Group removed");
-            } else {
-                System.out.println("Group don`t removed");
+            if(isPresentByName(name)) {
+                System.out.println("There are students present in the group, are you sure you want to delete this group?(Y/N)");
+                char yesOrNo = inputController.in.next().charAt(0);
+                if (yesOrNo == 'Y' || yesOrNo == 'y') {
+                    if (removeProvider.deleteGroupByName(name) > 0) {
+                        System.out.println("Group removed");
+                    } else {
+                        System.out.println("Group don`t removed");
+                    }
+                } else {
+                    return;
+                }
             }
+
         }
         addGoBackButton();
+    }
+    public boolean isPresentById(int groupId){
+        List<Student> students = new StudentProvider().getStudentsByGroupId(groupId);
+        return students.size() > 0;
+    }
+    public boolean isPresentByName(String groupName){
+        List<Student> students = new StudentProvider().getStudentsByName(groupName);
+        return students.size() > 0;
     }
 
     private void addGoBackButton() {
