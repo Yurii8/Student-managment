@@ -1,3 +1,7 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+/.idea
+/lib
+/target/classes/com/company
+/student managment.iml
