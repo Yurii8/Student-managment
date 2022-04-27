@@ -47,11 +47,13 @@ public class AddProcessor {
             String name = inputController.inputString();
             System.out.print("Enter surname students:");
             String surname = inputController.inputString();
-            if (addProvider.addStudents(name, surname, groupId) > 0) {
-                System.out.println("Student add");
-            } else {
-                System.out.println("Student don`t add");
-            }
+            List<Student> addStudent = addProvider.addStudents(name, surname, groupId);
+                if(addStudent.size()>0) {
+                    for(Student student: addStudent)
+                    System.out.println("Student add. His id " + student.getId());
+                }else {
+                    System.out.println("Student don`t add");
+                }
         }
         addGoBackButton();
     }

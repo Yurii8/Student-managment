@@ -12,7 +12,18 @@ public class InputController {
     public String inputString() {
         return in.next();
     }
-    public char inputChar(){return in.next().charAt(0);}
+    public char inputChar(){
+        String latter = in.next();
+        while (true) {
+            if (latter.length() > 1) {
+                System.out.print("Please enter one latter");
+                latter = in.next();
+            }else {
+                break;
+            }
+        }
+        return latter.charAt(0);
+    }
 
     public boolean isKeyword(String inputValue) {
         return inputValue != null && (inputValue.equals("back") || inputValue.equals("menu")

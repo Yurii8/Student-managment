@@ -9,11 +9,11 @@ public class ConnectionDb {
         String urlDb = "jdbc:postgresql://localhost:5432/student_managment";
         String username = "yurii";
         String password = "12345678";
-        try {
-            Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException e) {
-            throw new IllegalStateException(e.getMessage());
-        }
+//        try {
+//            Class.forName("org.postgresql.Driver");
+//        } catch (ClassNotFoundException e) {
+//            throw new IllegalStateException(e.getMessage());
+//        }
         try {
             return DriverManager.getConnection(urlDb, username, password);
         } catch (SQLException e) {
